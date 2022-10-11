@@ -1,5 +1,6 @@
 import re
 
+
 def task1(file):
     with open(file, 'r') as f:
         string = f.read()
@@ -33,6 +34,7 @@ def task1(file):
                 result += 1
         return result
 
+
 def task2(file):
     with open(file, 'r') as f:
         string = f.read()
@@ -49,28 +51,22 @@ def task2(file):
                 split_field = field.split(':')
                 if split_field[0] == fields[0]:
                     found[0] = True
-                    if (split_field[1].isnumeric() and
-                        int(split_field[1]) >= 1920 and
-                        int(split_field[1]) <= 2002):
-                            valid[0] = True
+                    if split_field[1].isnumeric() and 1920 <= int(split_field[1]) <= 2002:
+                        valid[0] = True
                     else:
                         valid[0] = False
                         break
                 elif split_field[0] == fields[1]:
                     found[1] = True
-                    if (split_field[1].isnumeric() and
-                        int(split_field[1]) >= 2010 and
-                        int(split_field[1]) <= 2020):
-                            valid[1] = True
+                    if split_field[1].isnumeric() and 2010 <= int(split_field[1]) <= 2020:
+                        valid[1] = True
                     else:
                         valid[1] = False
                         break
                 elif split_field[0] == fields[2]:
                     found[2] = True
-                    if (split_field[1].isnumeric() and
-                        int(split_field[1]) >= 2020 and
-                        int(split_field[1]) <= 2030):
-                            valid[2] = True
+                    if split_field[1].isnumeric() and 2020 <= int(split_field[1]) <= 2030:
+                        valid[2] = True
                     else:
                         valid[2] = False
                         break
@@ -79,16 +75,14 @@ def task2(file):
                     match = re.search(r'(\d+)(in|cm)', split_field[1])
                     if match:
                         if match[2] == 'in':
-                            if (int(match[1]) >= 59 and
-                                int(match[1]) <= 76):
-                                    valid[3] = True
+                            if 59 <= int(match[1]) <= 76:
+                                valid[3] = True
                             else:
                                 valid[3] = False
                                 break
                         else:
-                            if (int(match[1]) >= 150 and
-                                int(match[1]) <= 193):
-                                    valid[3] = True
+                            if 150 <= int(match[1]) <= 193:
+                                valid[3] = True
                             else:
                                 valid[3] = False
                                 break
@@ -112,12 +106,11 @@ def task2(file):
                         break
                 elif split_field[0] == fields[6]:
                     found[6] = True
-                    if (split_field[1].isnumeric() and
-                        len(split_field[1]) == 9):
-                            valid[6] = True
-                    else:
+                    if not split_field[1].isnumeric() or len(split_field[1]) != 9:
                         valid[6] = False
                         break
+                    else:
+                        valid[6] = True
             for i in found:
                 if not i:
                     ok = False
@@ -131,4 +124,5 @@ def task2(file):
         return result
 
 
+print(task1('day04.txt'))
 print(task2('day04.txt'))

@@ -11,11 +11,14 @@ def find_trees(file, right, down):
                 y += down
             current_line += 1
         return result
-        
+
+
 def task2():
-    check = [(1,1),(3,1), (5,1), (7,1), (1,2)]
+    check = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
     result = 1
     for tmp in check:
-        result *= find_trees('day03.txt',tmp[0],tmp[1])
+        result *= find_trees('day03.txt', tmp[0], tmp[1])
     return result
+
+
 print(task2())
